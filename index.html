@@ -149,35 +149,43 @@
     font-weight: 600;
   }
 
-  .current-day {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #ffeb3b;
-    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
-  }
-
-  /* DROPDOWN SIDEBAR */
+  /* SIDEBAR */
   #sidebar {
     position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
     background: rgba(255, 0, 0, 0.95);
     backdrop-filter: blur(15px);
     padding: 0;
-    transition: max-height 0.5s ease-in-out;
+    transition: left 0.4s ease-in-out;
     z-index: 10000;
-    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5);
-    overflow: hidden;
-    max-height: 0;
+    box-shadow: 0 0 30px rgba(139, 0, 0, 0.7);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   #sidebar.active {
-    max-height: 500px;
+    left: 0;
+  }
+
+  .sidebar-header {
+    padding: 25px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .sidebar-header h2 {
+    font-size: 1.8rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 15px rgba(255, 235, 59, 0.5);
   }
 
   .sidebar-content {
     padding: 20px;
+    flex-grow: 1;
   }
 
   .sidebar-day {
@@ -188,11 +196,12 @@
     cursor: pointer;
     transition: all 0.3s;
     border: 2px solid transparent;
+    text-align: left;
   }
 
   .sidebar-day:hover {
     background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
+    transform: translateX(5px);
     border-color: white;
   }
 
@@ -205,11 +214,37 @@
   .sidebar-day h3 {
     font-size: 1.3rem;
     margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .sidebar-day p {
     font-size: 0.9rem;
     opacity: 0.9;
+    margin-left: 34px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .close-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: rotate(90deg);
   }
 
   /* MAIN CONTENT */
@@ -501,7 +536,7 @@
 <!-- LOGIN PAGE -->
 <div id="loginPage">
   <div class="login-container">
-    <div class="login-title">Welcome to Valentine Week 2024 💘</div>
+    <div class="login-title">Welcome to Valentine Week 2026 💘</div>
     
     <div class="input-group">
       <label for="name">💖 Your Name:</label>
@@ -532,44 +567,48 @@
 <header id="mainHeader">
   <div class="header-left">
     <i class="fas fa-bars menuBtn" onclick="toggleSidebar()"></i>
-    <h3>❤️ VALENTINE WEEK 2024</h3>
+    <h3>❤️ VALENTINE WEEK 2026</h3>
   </div>
-  <div class="current-day">🌹 ROSE DAY</div>
 </header>
 
-<!-- DROPDOWN SIDEBAR -->
+<!-- SIDEBAR -->
 <div id="sidebar">
+  <div class="sidebar-header">
+    <h2>💝 Valentine Week</h2>
+  </div>
+  <div class="close-btn" onclick="toggleSidebar()">✕</div>
+  
   <div class="sidebar-content">
     <div class="sidebar-day active" onclick="showPage('roseDay')">
-      <h3>🌹 Rose Day (Feb 7)</h3>
+      <h3>🌹 Rose Day</h3>
       <p>Express love with beautiful roses</p>
     </div>
     <div class="sidebar-day" onclick="showPage('proposeDay')">
-      <h3>💝 Propose Day (Feb 8)</h3>
+      <h3>💝 Propose Day</h3>
       <p>Confess your love today</p>
     </div>
     <div class="sidebar-day" onclick="showPage('chocolateDay')">
-      <h3>🍫 Chocolate Day (Feb 9)</h3>
+      <h3>🍫 Chocolate Day</h3>
       <p>Sweeten your relationship</p>
     </div>
     <div class="sidebar-day" onclick="showPage('teddyDay')">
-      <h3>🧸 Teddy Day (Feb 10)</h3>
+      <h3>🧸 Teddy Day</h3>
       <p>Gift cuddly teddy bears</p>
     </div>
     <div class="sidebar-day" onclick="showPage('promiseDay')">
-      <h3>🤝 Promise Day (Feb 11)</h3>
+      <h3>🤝 Promise Day</h3>
       <p>Make promises for eternity</p>
     </div>
     <div class="sidebar-day" onclick="showPage('hugDay')">
-      <h3>🫂 Hug Day (Feb 12)</h3>
+      <h3>🫂 Hug Day</h3>
       <p>Warm hugs for your love</p>
     </div>
     <div class="sidebar-day" onclick="showPage('kissDay')">
-      <h3>💋 Kiss Day (Feb 13)</h3>
+      <h3>💋 Kiss Day</h3>
       <p>Seal your love with kisses</p>
     </div>
     <div class="sidebar-day" onclick="showPage('valentinesDay')">
-      <h3>❤️ Valentine's Day (Feb 14)</h3>
+      <h3>❤️ Valentine's Day</h3>
       <p>Celebrate eternal love</p>
     </div>
   </div>
@@ -600,7 +639,7 @@
       <div class="proposal-title" id="proposalTitle">Will You Be My Valentine? 💍</div>
       
       <div class="proposal-text">
-        <span id="proposalGreeting"></span><br><br>
+        Dear You,<br><br>
         
         From the moment I saw you, my life transformed into something beautiful. 
         Every smile of yours brightens my world, every word you speak touches my soul.<br><br>
@@ -713,36 +752,27 @@
     if (pageName === 'roseDay') {
       document.getElementById('roseDayPage').style.display = 'block';
       document.querySelector('.sidebar-day:nth-child(1)').classList.add('active');
-      document.querySelector('.current-day').textContent = '🌹 ROSE DAY';
       typeRoseDayLetter();
     } else if (pageName === 'proposeDay') {
       document.getElementById('proposalPage').style.display = 'block';
       document.querySelector('.sidebar-day:nth-child(2)').classList.add('active');
-      document.querySelector('.current-day').textContent = '💝 PROPOSE DAY';
-      updateProposalContent();
     } else if (pageName === 'chocolateDay') {
       document.querySelector('.sidebar-day:nth-child(3)').classList.add('active');
-      document.querySelector('.current-day').textContent = '🍫 CHOCOLATE DAY';
       alert(`Coming soon: Chocolate Day special! 🍫`);
     } else if (pageName === 'teddyDay') {
       document.querySelector('.sidebar-day:nth-child(4)').classList.add('active');
-      document.querySelector('.current-day').textContent = '🧸 TEDDY DAY';
       alert(`Coming soon: Teddy Day special! 🧸`);
     } else if (pageName === 'promiseDay') {
       document.querySelector('.sidebar-day:nth-child(5)').classList.add('active');
-      document.querySelector('.current-day').textContent = '🤝 PROMISE DAY';
       alert(`Coming soon: Promise Day special! 🤝`);
     } else if (pageName === 'hugDay') {
       document.querySelector('.sidebar-day:nth-child(6)').classList.add('active');
-      document.querySelector('.current-day').textContent = '🫂 HUG DAY';
       alert(`Coming soon: Hug Day special! 🫂`);
     } else if (pageName === 'kissDay') {
       document.querySelector('.sidebar-day:nth-child(7)').classList.add('active');
-      document.querySelector('.current-day').textContent = '💋 KISS DAY';
       alert(`Coming soon: Kiss Day special! 💋`);
     } else if (pageName === 'valentinesDay') {
       document.querySelector('.sidebar-day:nth-child(8)').classList.add('active');
-      document.querySelector('.current-day').textContent = '❤️ VALENTINE\'S DAY';
       alert(`Coming soon: Valentine's Day special! ❤️`);
     }
     
@@ -791,12 +821,6 @@ Ram nara
     }
     
     typeWriter();
-  }
-
-  // Update proposal content with name
-  function updateProposalContent() {
-    document.getElementById('proposalGreeting').textContent = `Dear You,`;
-    document.getElementById('proposalSign').textContent = userName;
   }
 
   // Rose Day Functions
