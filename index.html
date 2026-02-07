@@ -3,20 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌹 Rose Day Special ❤️</title>
+<title>🌹 Valentine Week Special ❤️</title>
 
 <!-- Font Awesome -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-  body {
+  * {
     margin: 0;
-    font-family: "Poppins", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
     text-align: center;
     color: white;
-    background: radial-gradient(circle at top, red, darkred);
+    background: linear-gradient(135deg, #ff0066 0%, #990033 100%);
+    min-height: 100vh;
+  }
+
+  /* LOGIN PAGE */
+  #loginPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff0066 0%, #990033 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+    padding: 20px;
+  }
+
+  .login-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .login-title {
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 0 0 25px #ffeb3b;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+
+  .input-group {
+    margin: 25px 0;
+    text-align: left;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    color: #990033;
+    outline: none;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .input-group input:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  }
+
+  .login-btn {
+    background: linear-gradient(45deg, #ff0066, #990033);
+    color: white;
+    border: none;
+    padding: 18px 50px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(255, 0, 102, 0.4);
+    font-weight: 600;
+    width: 100%;
+  }
+
+  .login-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 0, 102, 0.6);
   }
 
   /* HEADER */
@@ -25,207 +117,279 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     top: 0;
     width: 100%;
     background: rgba(180, 0, 0, 0.95);
-    padding: 12px;
-    display: flex;
-    justify-content: center;
+    padding: 15px;
+    display: none;
+    justify-content: space-between;
     align-items: center;
     z-index: 9999;
-    box-shadow: 0 0 25px red;
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+    height: 70px;
   }
 
-  header h3 {
-    margin: 0;
-    font-size: 1.3rem;
-    text-shadow: 0 0 12px white;
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
   }
 
-  /* MENU BUTTON */
   .menuBtn {
-    position: absolute;
-    left: 15px;
-    font-size: 26px;
-    cursor: pointer;
-    color: white;
-  }
-
-  /* MARQUEE */
-  marquee {
-    margin-top: 60px;
-    font-size: 1.1rem;
-    color: white;
-    font-weight: bold;
-    text-shadow: 0 0 10px yellow;
-  }
-
-  /* SIDEBAR */
-  #sidebar {
-    position: fixed;
-    left: -270px;
-    top: 0;
-    width: 260px;
-    height: 100%;
-    background: rgba(255, 0, 0, 0.85);
-    backdrop-filter: blur(15px);
-    padding: 20px;
-    transition: 0.4s;
-    z-index: 10000;
-    box-shadow: 0 0 25px darkred;
-  }
-
-  #sidebar.active {
-    left: 0;
-  }
-
-  /* CLOSE BUTTON */
-  .closeBtn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
     font-size: 28px;
     cursor: pointer;
     color: white;
+    transition: transform 0.3s;
   }
 
-  #sidebar h2 {
-    color: white;
-    margin-top: 50px;
-    text-shadow: 0 0 10px yellow;
+  .menuBtn:hover {
+    transform: scale(1.1);
   }
 
-  #sidebar a {
-    display: block;
-    margin: 14px 0;
-    text-decoration: none;
-    font-size: 1.1rem;
-    color: white;
-    padding: 10px;
-    border-radius: 12px;
-    transition: 0.3s;
+  header h3 {
+    font-size: 1.5rem;
+    text-shadow: 0 0 15px white;
+    font-weight: 600;
   }
 
-  #sidebar a:hover {
-    background: rgba(255,255,255,0.25);
-    transform: translateX(8px);
-    color: yellow;
+  .current-day {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffeb3b;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
   }
 
-  /* INTRO FIXED */
-  #intro {
+  /* DROPDOWN SIDEBAR */
+  #sidebar {
     position: fixed;
+    top: 70px;
+    left: 0;
     width: 100%;
-    height: 100vh;
-    background: darkred;
+    background: rgba(255, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 0;
+    transition: max-height 0.5s ease-in-out;
+    z-index: 10000;
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5);
+    overflow: hidden;
+    max-height: 0;
+  }
+
+  #sidebar.active {
+    max-height: 500px;
+  }
+
+  .sidebar-content {
+    padding: 20px;
+  }
+
+  .sidebar-day {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+
+  .sidebar-day:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    border-color: white;
+  }
+
+  .sidebar-day.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: yellow;
+    box-shadow: 0 0 15px yellow;
+  }
+
+  .sidebar-day h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+  }
+
+  .sidebar-day p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  /* MAIN CONTENT */
+  .content {
+    padding-top: 100px;
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ROSE DAY PAGE */
+  #roseDayPage {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .heart-title {
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 0 0 20px #ff0066;
+    margin-bottom: 30px;
+    animation: pulse 2s infinite;
+    font-weight: 700;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .letter-container {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px auto;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+  }
+
+  .letter-content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: white;
+    text-align: left;
+    white-space: pre-line;
+    min-height: 300px;
+  }
+
+  .buttons {
+    margin: 30px 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    z-index: 99999;
-    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 
-  #intro h1 {
-    font-size: 3rem;
-    color: white;
-    text-shadow: 0 0 25px yellow;
-    animation: zoom 2s ease-in-out;
-  }
-
-  @keyframes zoom {
-    from { transform: scale(0.7); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-
-  /* LOGIN */
-  #loginPage {
-    display: none;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  input {
-    padding: 15px;
-    width: 90%;
-    max-width: 280px;
-    margin: 10px;
-    border-radius: 12px;
-    border: none;
-    font-size: 1rem;
-    outline: none;
-    text-align: center;
-  }
-
-  #loginBtn {
+  .action-btn {
     padding: 15px 40px;
     border: none;
-    border-radius: 30px;
-    background: black;
-    color: white;
+    border-radius: 50px;
     font-size: 1.2rem;
     cursor: pointer;
-    box-shadow: 0 0 15px white;
-    transition: 0.3s;
+    transition: all 0.3s;
+    font-weight: 600;
+    min-width: 150px;
   }
 
-  /* MAIN PAGE */
-  #mainPage {
-    display: none;
-    min-height: 100vh;
-    padding: 20px;
-  }
-
-  /* LETTER BOX */
-  .letter {
-    margin: 25px auto;
-    max-width: 420px;
-    padding: 20px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 20px rgba(255,255,255,0.4);
-  }
-
-  /* ✅ Typed Text in Cursive + Big */
-  #typedLetter {
-    font-family: "cursive";
-    font-size: 1.6rem;
-    line-height: 2.2rem;
+  #yesBtn {
+    background: linear-gradient(45deg, #00cc00, #009900);
     color: white;
-    text-shadow: 0 0 12px pink;
-    white-space: pre-line;
+    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.4);
   }
 
-  /* BUTTONS */
-  #yesBtn, #noBtn {
-    padding: 15px 40px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin: 15px;
-    background: black;
+  #noBtn {
+    background: linear-gradient(45deg, #ff3333, #cc0000);
     color: white;
-    box-shadow: 0 0 15px white;
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
   }
 
-  #msg {
-    font-size: 1.7rem;
-    margin-top: 20px;
-    color: yellow;
-    font-weight: bold;
-    text-shadow: 0 0 15px white;
-    font-family: "Poppins", sans-serif;
+  .action-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
   }
 
-  /* AFTER YES MESSAGE (Normal Font, NOT cursive) */
-  #afterYes {
-    margin-top: 40px;
+  .response-message {
     font-size: 1.4rem;
-    color: white;
-    font-weight: bold;
+    margin: 20px 0;
+    color: #ffeb3b;
+    font-weight: 600;
+    text-shadow: 0 0 15px rgba(255, 235, 59, 0.5);
+    min-height: 60px;
+    line-height: 1.6;
+  }
+
+  /* PROPOSAL PAGE */
+  #proposalPage {
     display: none;
-    text-shadow: 0 0 15px yellow;
-    font-family: "Poppins", sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .proposal-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 40px;
+    margin: 30px auto;
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proposal-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 20%);
+    animation: rotate 20s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .proposal-title {
+    font-size: 2.5rem;
+    color: #ffeb3b;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px #ff0066;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+  }
+
+  .proposal-text {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin: 30px 0;
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .proposal-actions {
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .accept-btn {
+    background: linear-gradient(45deg, #ff0066, #990033);
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(255, 0, 102, 0.4);
+    font-weight: 600;
+  }
+
+  .accept-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(255, 0, 102, 0.6);
   }
 
   /* Falling Roses */
@@ -233,180 +397,510 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     position: fixed;
     top: -50px;
     font-size: 30px;
-    animation: fall 6s linear infinite;
+    animation: fall 8s linear infinite;
     z-index: 999;
+    opacity: 0.8;
   }
 
   @keyframes fall {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(110vh); opacity: 0; }
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Heart Animation */
+  .heart {
+    position: fixed;
+    font-size: 20px;
+    color: #ff0066;
+    animation: float 6s ease-in-out infinite;
+    z-index: 998;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+    }
   }
 
   /* FOOTER */
   footer {
     margin-top: 50px;
-    padding: 15px;
-    background: rgba(0,0,0,0.4);
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
     color: white;
     font-size: 1rem;
-    text-shadow: 0 0 10px yellow;
+    text-shadow: 0 0 10px #ffeb3b;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    display: none;
+  }
+
+  /* User Name Display */
+  .user-name-display {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 1.1rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 15px;
+    border-radius: 20px;
+    z-index: 10001;
+    display: none;
+  }
+
+  /* Welcome Animation */
+  .welcome-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff0066 0%, #990033 100%);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100001;
+  }
+
+  .welcome-text {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 0 30px #ffeb3b;
+    animation: welcomePulse 1.5s infinite;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+  }
+
+  @keyframes welcomePulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
   }
 </style>
 </head>
 
 <body>
 
-<header>
-  <i class="fas fa-bars menuBtn" onclick="toggleSidebar()"></i>
-  <h3>ROSE DAY</h3>
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+  <div class="login-container">
+    <div class="login-title">Welcome to Valentine Week 2024 💘</div>
+    
+    <div class="input-group">
+      <label for="name">💖 Your Name:</label>
+      <input type="text" id="name" placeholder="Enter your beautiful name...">
+    </div>
+    
+    <button class="login-btn" onclick="login()">
+      🌹 Enter Valentine Week 🌹
+    </button>
+    
+    <div style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
+      <i>Note: Your name will be used in Valentine messages</i>
+    </div>
+  </div>
+</div>
+
+<!-- WELCOME ANIMATION -->
+<div class="welcome-message" id="welcomeAnimation">
+  <div class="welcome-text" id="welcomeText"></div>
+</div>
+
+<!-- USER NAME DISPLAY -->
+<div class="user-name-display" id="userNameDisplay">
+  💖 Welcome, <span id="displayName"></span>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-left">
+    <i class="fas fa-bars menuBtn" onclick="toggleSidebar()"></i>
+    <h3>❤️ VALENTINE WEEK 2024</h3>
+  </div>
+  <div class="current-day">🌹 ROSE DAY</div>
 </header>
 
-<marquee>
-🌹 Happy Rose Day ❤️ | You are My Forever Rose 🌹💍
-</marquee>
-
-<!-- SIDEBAR -->
+<!-- DROPDOWN SIDEBAR -->
 <div id="sidebar">
-  <span class="closeBtn" onclick="toggleSidebar()">✖</span>
-
-  <h2>❤️ Valentine Week</h2>
-  <a href="#">🌹 Rose Day</a>
-  <a href="#">💝 Propose Day</a>
-  <a href="#">🍫 Chocolate Day</a>
-  <a href="#">🧸 Teddy Day</a>
-  <a href="#">🤝 Promise Day</a>
-  <a href="#">🫂 Hug Day</a>
-  <a href="#">💋 Kiss Day</a>
-  <a href="#">❤️ Valentine’s Day</a>
-</div>
-
-<!-- INTRO -->
-<div id="intro">
-  <h1>🌹 HAPPY ROSE DAY 🌹</h1>
-  <p>Loading Love...</p>
-</div>
-
-<!-- LOGIN -->
-<div id="loginPage">
-  <h1>Rose Day Login 🌹</h1>
-  <input type="text" id="name" placeholder="Enter Name">
-  <input type="text" id="surname" placeholder="Enter Surname">
-  <button id="loginBtn" onclick="goNext()">Next ❤️</button>
-</div>
-
-<!-- MAIN PAGE -->
-<div id="mainPage">
-  <h1 id="welcomeTitle"></h1>
-
-  <div class="letter">
-    <b><span id="personName"></span></b>,<br><br>
-    <span id="typedLetter"></span>
+  <div class="sidebar-content">
+    <div class="sidebar-day active" onclick="showPage('roseDay')">
+      <h3>🌹 Rose Day (Feb 7)</h3>
+      <p>Express love with beautiful roses</p>
+    </div>
+    <div class="sidebar-day" onclick="showPage('proposeDay')">
+      <h3>💝 Propose Day (Feb 8)</h3>
+      <p>Confess your love today</p>
+    </div>
+    <div class="sidebar-day" onclick="showPage('chocolateDay')">
+      <h3>🍫 Chocolate Day (Feb 9)</h3>
+      <p>Sweeten your relationship</p>
+    </div>
+    <div class="sidebar-day" onclick="showPage('teddyDay')">
+      <h3>🧸 Teddy Day (Feb 10)</h3>
+      <p>Gift cuddly teddy bears</p>
+    </div>
+    <div class="sidebar-day" onclick="showPage('promiseDay')">
+      <h3>🤝 Promise Day (Feb 11)</h3>
+      <p>Make promises for eternity</p>
+    </div>
+    <div class="sidebar-day" onclick="showPage('hugDay')">
+      <h3>🫂 Hug Day (Feb 12)</h3>
+      <p>Warm hugs for your love</p>
+    </div>
+    <div class="sidebar-day" onclick="showPage('kissDay')">
+      <h3>💋 Kiss Day (Feb 13)</h3>
+      <p>Seal your love with kisses</p>
+    </div>
+    <div class="sidebar-day" onclick="showPage('valentinesDay')">
+      <h3>❤️ Valentine's Day (Feb 14)</h3>
+      <p>Celebrate eternal love</p>
+    </div>
   </div>
-
-  <button id="yesBtn" onclick="yesClick()">YES 😍</button>
-  <button id="noBtn" onclick="noClick()">NO 😅</button>
-
-  <div id="msg"></div>
-
-  <div id="afterYes">
-    💍 Go now and come back tomorrow on the same website...  
-    because my proposal is waiting for you ❤️🌹
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    Made with ❤️ for YOU 🌹
-  </footer>
 </div>
+
+<!-- MAIN CONTENT -->
+<div class="content" id="mainContent">
+  
+  <!-- ROSE DAY PAGE -->
+  <div id="roseDayPage">
+    <div class="heart-title">Happy Rose Day ❤️</div>
+    
+    <div class="letter-container">
+      <div class="letter-content" id="typedLetter"></div>
+    </div>
+    
+    <div class="buttons">
+      <button class="action-btn" id="yesBtn" onclick="acceptRoseDay()">YES 😍</button>
+      <button class="action-btn" id="noBtn" onclick="rejectRoseDay()">NO 😅</button>
+    </div>
+    
+    <div class="response-message" id="responseMessage"></div>
+  </div>
+  
+  <!-- PROPOSAL PAGE -->
+  <div id="proposalPage">
+    <div class="proposal-container">
+      <div class="proposal-title" id="proposalTitle">Will You Be My Valentine? 💍</div>
+      
+      <div class="proposal-text">
+        <span id="proposalGreeting"></span><br><br>
+        
+        From the moment I saw you, my life transformed into something beautiful. 
+        Every smile of yours brightens my world, every word you speak touches my soul.<br><br>
+        
+        Today, with all my heart and with roses as witness, I want to ask you something important.<br><br>
+        
+        Will you be my Valentine and make me the happiest person in the world?<br><br>
+        
+        I promise to cherish you, to stand by you through everything, 
+        and to make every moment we share special.<br><br>
+        
+        With all my love,<br>
+        RAM NARA
+      </div>
+      
+      <div class="proposal-actions">
+        <button class="accept-btn" onclick="acceptProposal()">
+          💖 YES, I'LL BE YOUR VALENTINE! 💍
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="mainFooter">
+  Made with ❤️ for You | Valentine Week 2026
+</footer>
 
 <script>
-  window.onload = function () {
-    setTimeout(() => {
-      document.getElementById("intro").style.display = "none";
-      document.getElementById("loginPage").style.display = "flex";
-    }, 2500);
-  };
+  // Global variable to store user name
+  let userName = '';
 
-  function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
-
-  function goNext() {
-    let name = document.getElementById("name").value;
-    let surname = document.getElementById("surname").value;
-
-    if (name === "" || surname === "") {
-      alert("Please enter Name and Surname");
+  // Login function
+  function login() {
+    const nameInput = document.getElementById('name').value.trim();
+    
+    if (!nameInput) {
+      alert('Please enter your name to continue! ❤️');
       return;
     }
-
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("mainPage").style.display = "block";
-
-    document.getElementById("welcomeTitle").innerHTML =
-      "Happy Rose Day " + name + " " + surname + " 🌹❤️";
-
-    document.getElementById("personName").innerHTML =
-      name + " " + surname;
-
-    startTyping(name);
-    startRoses();
+    
+    userName = nameInput;
+    
+    // Show welcome animation
+    showWelcomeAnimation();
   }
 
-  function yesClick() {
-    document.getElementById("msg").innerHTML =
-      "🌹 She Said YES!!! 💍❤️ Forever Begins Now 💕";
-
-    document.getElementById("afterYes").style.display = "block";
+  // Show welcome animation
+  function showWelcomeAnimation() {
+    const welcomeText = document.getElementById('welcomeText');
+    welcomeText.textContent = `Welcome to Valentine Week, ${userName}!`;
+    
+    const loginPage = document.getElementById('loginPage');
+    const welcomeAnimation = document.getElementById('welcomeAnimation');
+    
+    loginPage.style.display = 'none';
+    welcomeAnimation.style.display = 'flex';
+    
+    // After 3 seconds, show main content
+    setTimeout(() => {
+      welcomeAnimation.style.opacity = '0';
+      setTimeout(() => {
+        welcomeAnimation.style.display = 'none';
+        initializeMainApp();
+      }, 1000);
+    }, 3000);
   }
 
-  function noClick() {
-    alert("😢 Please don't say NO... Keep our fights aside, let's stay happy ❤️🌹");
+  // Initialize main application
+  function initializeMainApp() {
+    // Show all main elements
+    document.getElementById('mainHeader').style.display = 'flex';
+    document.getElementById('mainContent').style.display = 'flex';
+    document.getElementById('mainFooter').style.display = 'block';
+    document.getElementById('userNameDisplay').style.display = 'block';
+    
+    // Update user name display
+    document.getElementById('displayName').textContent = userName;
+    
+    // Start animations
+    startRoseAnimation();
+    startHeartAnimation();
+    
+    // Show Rose Day page with personalized content
+    showPage('roseDay');
   }
 
-  function startTyping(name) {
-    let text =
-`🌹 Happy Rose Day ${name} ❤️
+  // Toggle sidebar
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+  }
 
-Every moment with you feels special,
-and my love for you will keep blooming forever 💖
+  // Show different pages
+  function showPage(pageName) {
+    const pages = ['roseDayPage', 'proposalPage'];
+    const sidebarDays = document.querySelectorAll('.sidebar-day');
+    
+    // Hide all pages
+    pages.forEach(page => {
+      document.getElementById(page).style.display = 'none';
+    });
+    
+    // Remove active class from all sidebar items
+    sidebarDays.forEach(day => {
+      day.classList.remove('active');
+    });
+    
+    // Show selected page
+    if (pageName === 'roseDay') {
+      document.getElementById('roseDayPage').style.display = 'block';
+      document.querySelector('.sidebar-day:nth-child(1)').classList.add('active');
+      document.querySelector('.current-day').textContent = '🌹 ROSE DAY';
+      typeRoseDayLetter();
+    } else if (pageName === 'proposeDay') {
+      document.getElementById('proposalPage').style.display = 'block';
+      document.querySelector('.sidebar-day:nth-child(2)').classList.add('active');
+      document.querySelector('.current-day').textContent = '💝 PROPOSE DAY';
+      updateProposalContent();
+    } else if (pageName === 'chocolateDay') {
+      document.querySelector('.sidebar-day:nth-child(3)').classList.add('active');
+      document.querySelector('.current-day').textContent = '🍫 CHOCOLATE DAY';
+      alert(`Coming soon: Chocolate Day special! 🍫`);
+    } else if (pageName === 'teddyDay') {
+      document.querySelector('.sidebar-day:nth-child(4)').classList.add('active');
+      document.querySelector('.current-day').textContent = '🧸 TEDDY DAY';
+      alert(`Coming soon: Teddy Day special! 🧸`);
+    } else if (pageName === 'promiseDay') {
+      document.querySelector('.sidebar-day:nth-child(5)').classList.add('active');
+      document.querySelector('.current-day').textContent = '🤝 PROMISE DAY';
+      alert(`Coming soon: Promise Day special! 🤝`);
+    } else if (pageName === 'hugDay') {
+      document.querySelector('.sidebar-day:nth-child(6)').classList.add('active');
+      document.querySelector('.current-day').textContent = '🫂 HUG DAY';
+      alert(`Coming soon: Hug Day special! 🫂`);
+    } else if (pageName === 'kissDay') {
+      document.querySelector('.sidebar-day:nth-child(7)').classList.add('active');
+      document.querySelector('.current-day').textContent = '💋 KISS DAY';
+      alert(`Coming soon: Kiss Day special! 💋`);
+    } else if (pageName === 'valentinesDay') {
+      document.querySelector('.sidebar-day:nth-child(8)').classList.add('active');
+      document.querySelector('.current-day').textContent = '❤️ VALENTINE\'S DAY';
+      alert(`Coming soon: Valentine's Day special! ❤️`);
+    }
+    
+    // Close sidebar
+    toggleSidebar();
+  }
 
-You are the most beautiful rose in my life,
-bringing happiness, love, and peace into my heart.
+  // Typing animation for Rose Day letter
+  function typeRoseDayLetter() {
+    const letterText = `Dear You,
+    
+🌹 Happy Rose Day! 🌹
 
-Keep our fights aside…
-Let’s stay happy with love ❤️✨
+On this special day dedicated to roses,
+I want to tell you something from my heart.
 
-Once again Happy Rose Day ❤️🌹
+Your presence in my life has made everything brighter.
+Your smile gives me strength, your love gives me purpose.
 
-Forever Yours,
-— Ram Nara`;
+Like a rose that blooms beautifully with time,
+our connection grows stronger each day.
+It becomes more meaningful and precious.
 
+I want to cherish every moment with you,
+to love you endlessly,
+and to be there for you always.
+
+You mean the world to me,
+You are my special rose,
+My reason to be happy.
+
+With all my love,
+Ram nara
+`;
+    
+    const letterElement = document.getElementById('typedLetter');
+    letterElement.innerHTML = '';
     let i = 0;
-    document.getElementById("typedLetter").innerHTML = "";
-
-    function typing() {
-      if (i < text.length) {
-        document.getElementById("typedLetter").innerHTML += text.charAt(i);
+    
+    function typeWriter() {
+      if (i < letterText.length) {
+        letterElement.innerHTML += letterText.charAt(i);
         i++;
-        setTimeout(typing, 50);
+        setTimeout(typeWriter, 30);
       }
     }
-    typing();
+    
+    typeWriter();
   }
 
-  function startRoses() {
+  // Update proposal content with name
+  function updateProposalContent() {
+    document.getElementById('proposalGreeting').textContent = `Dear You,`;
+    document.getElementById('proposalSign').textContent = userName;
+  }
+
+  // Rose Day Functions
+  function acceptRoseDay() {
+    const responseMessage = document.getElementById('responseMessage');
+    responseMessage.innerHTML = `🌹 YES! Thank you for accepting my rose! 💖<br>Our beautiful journey continues...`;
+    responseMessage.style.color = '#00ff00';
+    responseMessage.style.textShadow = '0 0 20px #00ff00';
+  }
+
+  function rejectRoseDay() {
+    const responseMessage = document.getElementById('responseMessage');
+    responseMessage.innerHTML = `😢 Please reconsider... My feelings for you are genuine! 🌹<br>Let's give this a chance? ❤️`;
+    responseMessage.style.color = '#ff6666';
+    responseMessage.style.textShadow = '0 0 20px #ff6666';
+    
+    // Auto change to yes after 3 seconds
+    setTimeout(() => {
+      responseMessage.innerHTML = `❤️ Thank you for reconsidering! You made me so happy! 🌹`;
+      responseMessage.style.color = '#00ff00';
+      responseMessage.style.textShadow = '0 0 20px #00ff00';
+    }, 3000);
+  }
+
+  // Proposal Functions
+  function acceptProposal() {
+    const container = document.querySelector('.proposal-container');
+    container.innerHTML = `
+      <div class="proposal-title">💍 YES! 💖</div>
+      <div class="proposal-text" style="font-size: 1.8rem;">
+        🎉 CONGRATULATIONS! 🎉<br><br>
+        Valentine's Day just got more special!<br><br>
+        💕 This is the beginning of something beautiful 💕
+      </div>
+      <div style="font-size: 1.4rem; margin-top: 30px;">
+        💘 Happily Ever After Begins Now 💘
+      </div>
+    `;
+    
+    // Create celebration effect
+    for(let i = 0; i < 50; i++) {
+      createCelebrationHeart();
+    }
+  }
+
+  // Animation functions
+  function startRoseAnimation() {
     setInterval(() => {
-      let rose = document.createElement("div");
-      rose.classList.add("rose");
-      rose.innerHTML = "🌹";
-      rose.style.left = Math.random() * 100 + "vw";
+      const rose = document.createElement('div');
+      rose.className = 'rose';
+      rose.innerHTML = '🌹';
+      rose.style.left = Math.random() * 100 + 'vw';
+      rose.style.fontSize = (Math.random() * 30 + 20) + 'px';
+      rose.style.animationDuration = (Math.random() * 5 + 8) + 's';
       document.body.appendChild(rose);
-
-      setTimeout(() => rose.remove(), 6000);
-    }, 500);
+      
+      setTimeout(() => rose.remove(), 10000);
+    }, 800);
   }
-</script>
 
+  function startHeartAnimation() {
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+      heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      document.body.appendChild(heart);
+      
+      setTimeout(() => heart.remove(), 10000);
+    }, 1500);
+  }
+
+  function createCelebrationHeart() {
+    const heart = document.createElement('div');
+    heart.innerHTML = '💖';
+    heart.style.position = 'fixed';
+    heart.style.fontSize = '40px';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.top = '100vh';
+    heart.style.zIndex = '1000';
+    heart.style.animation = `celebrate 3s forwards`;
+    
+    document.body.appendChild(heart);
+    
+    setTimeout(() => heart.remove(), 3000);
+  }
+
+  // Add celebration animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes celebrate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
 </body>
 </html>
